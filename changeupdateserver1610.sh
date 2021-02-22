@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+
 ip_address=${1}
 hardpassword=${2}
 upgradehttpserver=${3}
