@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 ip_address=${1}
 hardpassword=${2}
 upgradehttpserver=${3}
@@ -9,7 +9,7 @@ if [ ! -z $sid ]
 then
     echo "OK Login $ip_address"
     changeupgradesettings="P238=0&P194=3&P6767=1&P192=$upgradehttpserver&sid=${sid}"
-    curl -s -X "POST" -b /tmp/cookies.txt -d"${changeupgradesetting}" --header "Connection: keep-alive" \
+    curl -s -X "POST" -b /tmp/cookies.txt -d"${changeupgradesettings}" --header "Connection: keep-alive" \
       --header "Cache-Control: max-age=0" \
       --header "Origin: http://$ip_address" \
       --header "Referer: http://$ip_address/" \
