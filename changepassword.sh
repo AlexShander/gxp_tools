@@ -1,6 +1,7 @@
 #!/bin/bash
 # Find all GPX with Asterisk CLI if you use chan_sip and not chan_pjsip
 
+SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 hardpassword=${1}
 
 asterisk -rx 'sip show peers' | grep OK |cut -d '/' -f1| awk '{print $1}'| while IFS='' read -r line || [[ -n "$line" ]]; do  
@@ -12,15 +13,15 @@ asterisk -rx 'sip show peers' | grep OK |cut -d '/' -f1| awk '{print $1}'| while
        if [[ "$phone" =~ ".*GXP2160.*" ]]
        then
            echo "Trying change password on $phone - $ipaddress"
-           /root/changepasswordgxp2160.sh $ipaddress $hardpassword
+           $SCRIPTPATH/changepasswordgxp2160.sh $ipaddress $hardpassword
        elif [[ "$phone" =~ ".*GXP1400.*" ]]
        then
            echo "Trying change password on $phone - $ipaddress"
-           /root/changepasswordgxp1400.sh $ipaddress $hardpassword
+           $SCRIPTPATH/changepasswordgxp1400.sh $ipaddress $hardpassword
        elif [[ "$phone" =~ ".*GXP2160.*" ]]
        then
            echo "Trying change password on $phone - $ipaddress"
-           /root/changepasswordgxp1610.sh $ipaddress $hardpassword
+           $SCRIPTPATH/changepasswordgxp1610.sh $ipaddress admin $hardpassword
        else
            echo "UNKNOW MODEL is $phone - $ipaddress"
        fi
