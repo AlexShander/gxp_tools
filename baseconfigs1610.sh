@@ -10,7 +10,7 @@ sid=$(curl -s -c /tmp/cookies.txt -d"username=admin&password=$hardpassword" -H "
 if [ ! -z $sid ]
 then
     echo "OK Login $ip_address"
-    changeupgradesettings="P32=5&P2397=1&P40=$localsipport&P2347=1&P57=8&P58=18&P59=0&P60=8&P61=8&P62=8&P46=8&P191=0&P39=$localrtpport&P64=TZV-6&P143=0&P122=1&P1310=1&P1565=2&sid=${sid}"
+    changeupgradesettings="P32=5&P2397=1&P40=$localsipport&P2347=1&P57=8&P58=18&P59=0&P60=8&P61=8&P62=8&P46=8&P191=0&P39=$localrtpport&P64=TZV-6&P143=0&P122=1&P1310=1&P1565=2&P1362=ru&sid=${sid}"
     curl -s -X "POST" -b /tmp/cookies.txt -d"${changeupgradesettings}" --header "Connection: keep-alive" \
       --header "Cache-Control: max-age=0" \
       --header "Origin: http://$ip_address" \
